@@ -1,28 +1,27 @@
 import React from 'react';
 import axios from 'axios';
-import { Button } from '@chakra-ui/react';
+import { useSelector } from 'react-redux';
 const ChatPage = () => {
-    const [chats, setChats] = React.useState([]);
-    const handleFetchChats = async () => {
-        try {
-            const response = await axios.get('/api/chat');
-            setChats(response.data);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-    React.useEffect(() => {
-        handleFetchChats();
-    }, []);
+    const { currentUser } = useSelector((state) => state.authReducer);
+    // const [chats, setChats] = React.useState([]);
+    // const handleFetchChats = async () => {
+    //     try {
+    //         const response = await axios.get('/api/chat');
+    //         setChats(response.data);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
+    // React.useEffect(() => {
+    //     handleFetchChats();
+    // }, []);
     return (
         <div>
             <h1>ChatPage</h1>
-            {chats.map((chat) => {
+            <h2>{currentUser?.name}</h2>
+            {/* {chats.map((chat) => {
                 return <div key={chat._id}>{chat.chatName}</div>;
-            })}
-            {/* <Button colorScheme="purple" onClick={handleFetchChats}>
-        Fetch Chats
-      </Button> */}
+            })} */}
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { io } from 'socket.io-client';
+import './App.css';
 import { RouterProvider } from 'react-router-dom';
 import router from './routes';
 const App = () => {
@@ -8,9 +9,9 @@ const App = () => {
     //   console.log(socket);
     // }, []);
     return (
-        <>
+        <div className="App">
             <RouterProvider router={router} />
-        </>
+        </div>
     );
 };
 
